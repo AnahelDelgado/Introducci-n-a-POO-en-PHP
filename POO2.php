@@ -99,4 +99,22 @@
             echo "Vehículo ha sido deserializado.<br>";
         }
     }
+
+    //Creamos la clase "Duenio" que hereda de Persona
+class Duenio extends Persona {
+    private $vehiculos = [];
+
+    public function agregarVehiculo(Vehiculo $vehiculo) {
+        $this->vehiculos[] = $vehiculo;
+        echo "{$this->nombre} ha adquirido un vehículo: {$vehiculo->obtenerInformacion()}<br>";
+    }
+
+    public function obtenerVehiculos() {
+        return $this->vehiculos;
+    }
+
+    public function obtenerDetalles() {
+        return "Dueño: {$this->nombre}, Edad: {$this->edad}, Nacionalidad: " . parent::NACIONALIDAD;
+    }
+}
 ?>
