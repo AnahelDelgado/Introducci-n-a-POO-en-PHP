@@ -101,20 +101,41 @@
     }
 
     //Creamos la clase "Duenio" que hereda de Persona
-class Duenio extends Persona {
-    private $vehiculos = [];
+    class Duenio extends Persona {
+        private $vehiculos = [];
 
-    public function agregarVehiculo(Vehiculo $vehiculo) {
-        $this->vehiculos[] = $vehiculo;
-        echo "{$this->nombre} ha adquirido un vehículo: {$vehiculo->obtenerInformacion()}<br>";
+        public function agregarVehiculo(Vehiculo $vehiculo) {
+            $this->vehiculos[] = $vehiculo;
+            echo "{$this->nombre} ha adquirido un vehículo: {$vehiculo->obtenerInformacion()}<br>";
+        }
+
+        public function obtenerVehiculos() {
+            return $this->vehiculos;
+        }
+
+        public function obtenerDetalles() {
+            return "Dueño: {$this->nombre}, Edad: {$this->edad}, Nacionalidad: " . parent::NACIONALIDAD;
+        }
     }
 
-    public function obtenerVehiculos() {
-        return $this->vehiculos;
-    }
+    //Ahora haremos la creación de objetos
+    $mecanico1 = new Mecanico("Aurelio", 28, 30);
+    $duenio1 = new Duenio("Pepe", 40);
 
-    public function obtenerDetalles() {
-        return "Dueño: {$this->nombre}, Edad: {$this->edad}, Nacionalidad: " . parent::NACIONALIDAD;
-    }
-}
+    $vehiculo1 = new Vehiculo("Toyota", "Starlet", "121212");
+    $vehiculo2 = new Vehiculo("Honda", "Civic", "343434");
+
+    //Ahora haremos la asignación de mecánico y dueño a los vehículos
+    $vehiculo1->asignarMecanico($mecanico1);
+    $duenio1->agregarVehiculo($vehiculo1);
+
+    $vehiculo2->asignarMecanico($mecanico1);
+    $duenio1->agregarVehiculo($vehiculo2);
+
+    //Mostrar detallesde los objetos
+    echo $mecanico1->obtenerDetalles() . "<br>";
+    echo $duenio1->obtenerDetalles() . "<br>";
+
+    echo "Detalles del vehículo 1: " . $vehiculo1->obtenerInformacion() . ", Mecánico asignado: " . $vehiculo1->obtenerMecanicoAsignado()->obtenerDetalles() . "<br>";
+    echo "Detalles del vehículo 2: " . $vehiculo2->obtenerInformacion() . ", Mecánico asignado: " . $vehiculo2->obtenerMecanicoAsignado()->obtenerDetalles() . "<br>";
 ?>
