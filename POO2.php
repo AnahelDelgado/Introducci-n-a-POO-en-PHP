@@ -59,4 +59,44 @@
             self::$totalMecanicos--;
         }
     }
+
+    //Creamos la clase "Vehiculo"
+    class Vehiculo{
+        private $marca;
+        private $modelo;
+        private $numeroSerie;
+        private $mecanicoAsignado;
+
+        //constructor de la clase
+        public function __construct($marca, $modelo, $numeroSerie){
+            $this->marca = $marca;
+            $this->modelo = $modelo;
+            $this->numeroSerie = $numeroSerie;
+        }
+
+        //Método para asignar un mecánico al vehículo
+        public function asignarMecanico(Mecanico $mecanico){
+            $this->mecanicoAsignado = $mecanico;
+        }
+
+        //Método para obtener la información completa del vehículo
+        public function obtenerInformacion() {
+            return "Marca: {$this->marca}, Modelo: {$this->modelo}, Número de Serie: {$this->numeroSerie}";
+        }
+    
+        //método para obtener el mecánico que está asignado al vehículo
+        public function obtenerMecanicoAsignado() {
+            return $this->mecanicoAsignado;
+        }
+    
+        //Método para serializar un objeto
+        public function __sleep() {
+            return ['marca', 'modelo', 'numeroSerie'];
+        }
+    
+        //Método para deserializar un vehículo
+        public function __wakeup() {
+            echo "Vehículo ha sido deserializado.<br>";
+        }
+    }
 ?>
