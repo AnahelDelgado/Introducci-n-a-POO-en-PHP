@@ -128,6 +128,7 @@ $duenio1->agregarVehiculo($vehiculo2);
 
 // Mostrar detalles de los objetos
 echo $mecanico1->obtenerDetalles() . "";
+echo $mecanico2->obtenerDetalles() . "";
 echo $duenio1->obtenerDetalles() . "\n";
 
 echo "Detalles del vehículo 1: " . $vehiculo1->obtenerInformacion() . "- Mecánico asignado: " . $vehiculo1->obtenerMecanicoAsignado()->obtenerDetalles() . "\n";
@@ -140,4 +141,5 @@ echo "Total de mecánicos: " . Mecanico::obtenerTotalMecanicos() . "\n";
 $serializado = serialize($duenio1);
 $deserializado = unserialize($serializado);
 echo "Dueño deserializado: " . $deserializado->obtenerDetalles() . "\n";
+
 ?>
