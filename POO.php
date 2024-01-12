@@ -56,7 +56,7 @@
 
         //Añadimos un Destructor
         public function __destruct(){
-            echo "Mecánico {$this->nombre} ha sido eliminado.<br>";
+            echo "Mecánico {$this->nombre} ha sido eliminado.";
             self::$totalMecanicos--;
         }
     }
@@ -97,7 +97,7 @@
     
         //Método para deserializar un vehículo
         public function __wakeup() {
-            echo "Vehículo ha sido deserializado.<br>";
+            echo "Vehículo ha sido deserializado.";
         }
     }
 
@@ -107,7 +107,7 @@
 
         public function agregarVehiculo(Vehiculo $vehiculo) {
             $this->vehiculos[] = $vehiculo;
-            echo "{$this->nombre} ha adquirido un vehículo: {$vehiculo->obtenerInformacion()}<br>";
+            echo "{$this->nombre} ha adquirido un vehículo: {$vehiculo->obtenerInformacion()}";
         }
 
         public function obtenerVehiculos() {
@@ -134,17 +134,17 @@
     $duenio1->agregarVehiculo($vehiculo2);
 
     //Mostrar detallesde los objetos
-    echo $mecanico1->obtenerDetalles() . "<br>";
-    echo $duenio1->obtenerDetalles() . "<br>";
+    echo $mecanico1->obtenerDetalles() . "";
+    echo $duenio1->obtenerDetalles() . "";
 
-    echo "Detalles del vehículo 1: " . $vehiculo1->obtenerInformacion() . ", Mecánico asignado: " . $vehiculo1->obtenerMecanicoAsignado()->obtenerDetalles() . "<br>";
-    echo "Detalles del vehículo 2: " . $vehiculo2->obtenerInformacion() . ", Mecánico asignado: " . $vehiculo2->obtenerMecanicoAsignado()->obtenerDetalles() . "<br>";
+    echo "Detalles del vehículo 1: " . $vehiculo1->obtenerInformacion() . ", Mecánico asignado: " . $vehiculo1->obtenerMecanicoAsignado()->obtenerDetalles() . "";
+    echo "Detalles del vehículo 2: " . $vehiculo2->obtenerInformacion() . ", Mecánico asignado: " . $vehiculo2->obtenerMecanicoAsignado()->obtenerDetalles() . "";
 
     // Uso de método estático
-    echo "Total de mecánicos: " . Mecanico::obtenerTotalMecanicos() . "<br>";
+    echo "Total de mecánicos: " . Mecanico::obtenerTotalMecanicos() . "";
 
     // Serialización y deserialización de objetos
     $serializado = serialize($duenio1);
     $deserializado = unserialize($serializado);
-    echo "Dueño deserializado: " . $deserializado->obtenerDetalles() . "<br>";
+    echo "Dueño deserializado: " . $deserializado->obtenerDetalles() . "";
 ?>
